@@ -1,8 +1,8 @@
 [PROJETO]
 TITULO=Sistema para aprovação de créditos
 AUTOR=Giovanni dos Santos e Diego Parode
-DATA=07/06/2016 19:20
-DESCRICAO=Verificar se um usuário irá ser aprovado ao solicitar uma aprovação de crédito
+DATA=19/06/2016 17:54
+DESCRICAO=Verifica a nota de um usuário ao tentar solicitar aprovação de créditos.
 IDENTIFICADOR_OBJETOS=15
 [DEFINICAO_FUNCOES]
 PROJETO_FUNCAO_AND=FUNC_MINIMO
@@ -17,12 +17,12 @@ DEFINICOES_SISTEMA=-
 [ENTRADA_0]
 IDOBJ=4
 NAME=Idade
-ORIGEMX=35
-ORIGEMY=205
-DESTINOX=205
-DESTINOY=255
-TEXTOX=104
-TEXTOY=222
+ORIGEMX=20
+ORIGEMY=203
+DESTINOX=190
+DESTINOY=253
+TEXTOX=89
+TEXTOY=220
 UNIVERSOINICIO=1
 UNIVERSOFIM=80
 UNIDADE=Anos
@@ -43,7 +43,7 @@ VAL_B=12,53
 VAL_C=0
 VAL_D=0
 [ENTRADA_0_TERMO_2]
-TERMO=Acima80
+TERMO=Acima_50
 FUNCAO=2
 COR=clYellow
 VAL_A=80
@@ -63,7 +63,7 @@ UNIVERSOINICIO=260
 UNIVERSOFIM=6000
 UNIDADE=Reais
 [ENTRADA_1_TERMO_0]
-TERMO=Ate1000
+TERMO=Ate_1000
 FUNCAO=2
 COR=clFuchsia
 VAL_A=260
@@ -87,7 +87,7 @@ VAL_B=812,8
 VAL_C=0
 VAL_D=0
 [ENTRADA_1_TERMO_3]
-TERMO=Mais_3000
+TERMO=Acima_3000
 FUNCAO=2
 COR=clRed
 VAL_A=6000
@@ -97,12 +97,12 @@ VAL_D=0
 [ENTRADA_2]
 IDOBJ=14
 NAME=Comprometimento_Renda
-ORIGEMX=34
-ORIGEMY=301
-DESTINOX=204
-DESTINOY=351
-TEXTOX=44
-TEXTOY=318
+ORIGEMX=22
+ORIGEMY=281
+DESTINOX=192
+DESTINOY=331
+TEXTOX=32
+TEXTOY=298
 UNIVERSOINICIO=0
 UNIVERSOFIM=30
 UNIDADE=Porcento
@@ -133,12 +133,12 @@ VAL_D=0
 [ENTRADA_3]
 IDOBJ=15
 NAME=Valor_Financiado
-ORIGEMX=37
-ORIGEMY=382
-DESTINOX=207
-DESTINOY=432
-TEXTOX=72
-TEXTOY=399
+ORIGEMX=22
+ORIGEMY=363
+DESTINOX=192
+DESTINOY=413
+TEXTOX=57
+TEXTOY=380
 UNIVERSOINICIO=260
 UNIVERSOFIM=6000
 UNIDADE=Reais
@@ -167,7 +167,7 @@ VAL_B=812,8
 VAL_C=0
 VAL_D=0
 [ENTRADA_3_TERMO_3]
-TERMO=Mais_3000
+TERMO=Acima_3000
 FUNCAO=2
 COR=clPurple
 VAL_A=6000
@@ -177,12 +177,12 @@ VAL_D=0
 [SAIDA_0]
 IDOBJ=6
 NAME=Nota
-ORIGEMX=462
-ORIGEMY=209
-DESTINOX=632
-DESTINOY=259
-TEXTOX=504
-TEXTOY=225
+ORIGEMX=753
+ORIGEMY=243
+DESTINOX=923
+DESTINOY=293
+TEXTOX=824
+TEXTOY=260
 UNIVERSOINICIO=0
 UNIVERSOFIM=10
 UNIDADE=Nota
@@ -213,66 +213,761 @@ VAL_D=0
 [BLOCO_REGRA_0]
 IDOBJ=0
 NAME=RegrasSalario
-ORIGEMX=235
-ORIGEMY=209
-DESTINOX=405
-DESTINOY=259
-TEXTOX=279
-TEXTOY=226
+ORIGEMX=431
+ORIGEMY=243
+DESTINOX=601
+DESTINOY=293
+TEXTOX=475
+TEXTOY=260
 [BLOCO_REGRA_0_CONEXAO_ENTRADA_0]
 IDOBJORIGEM=4
-ORIGEMX=205
-ORIGEMY=230
-DESTINOX=235
-DESTINOY=234
+ORIGEMX=190
+ORIGEMY=228
+DESTINOX=431
+DESTINOY=268
 [BLOCO_REGRA_0_CONEXAO_ENTRADA_1]
 IDOBJORIGEM=13
 ORIGEMX=187
 ORIGEMY=142
-DESTINOX=235
-DESTINOY=234
+DESTINOX=431
+DESTINOY=268
 [BLOCO_REGRA_0_CONEXAO_ENTRADA_2]
 IDOBJORIGEM=14
-ORIGEMX=204
-ORIGEMY=326
-DESTINOX=235
-DESTINOY=234
+ORIGEMX=192
+ORIGEMY=306
+DESTINOX=431
+DESTINOY=268
 [BLOCO_REGRA_0_CONEXAO_ENTRADA_3]
 IDOBJORIGEM=15
-ORIGEMX=207
-ORIGEMY=407
-DESTINOX=235
-DESTINOY=234
+ORIGEMX=192
+ORIGEMY=388
+DESTINOX=431
+DESTINOY=268
 [BLOCO_REGRA_0_CONEXAO_SAIDA_0]
 IDOBJORIGEM=6
-ORIGEMX=405
-ORIGEMY=234
-DESTINOX=462
-DESTINOY=234
+ORIGEMX=601
+ORIGEMY=268
+DESTINOX=753
+DESTINOY=268
 [BLOCO_REGRA_0_REGRA_0]
 NRO=1
-ANTECEDENTE=(Idade =  Classe_A)
-CONSEQUENTE=(Nota =  Alto)
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Ruim)
 TIPO_UNIAO=AND
 [BLOCO_REGRA_0_REGRA_1]
 NRO=2
-ANTECEDENTE=(Idade =  Classe_B)
-CONSEQUENTE=(Nota =  MedioAlto)
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
 TIPO_UNIAO=AND
 [BLOCO_REGRA_0_REGRA_2]
 NRO=3
-ANTECEDENTE=(Idade =  Classe_C)
-CONSEQUENTE=(Nota =  Medio)
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
 TIPO_UNIAO=AND
 [BLOCO_REGRA_0_REGRA_3]
 NRO=4
-ANTECEDENTE=(Idade =  Classe_D)
-CONSEQUENTE=(Nota =  MedioBaixo)
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
 TIPO_UNIAO=AND
 [BLOCO_REGRA_0_REGRA_4]
 NRO=5
-ANTECEDENTE=(Idade =  Classe_E)
-CONSEQUENTE=(Nota =  Baixo)
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_5]
+NRO=6
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_6]
+NRO=7
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_7]
+NRO=8
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_8]
+NRO=9
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_9]
+NRO=10
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_10]
+NRO=11
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_11]
+NRO=12
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_12]
+NRO=13
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_13]
+NRO=14
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_14]
+NRO=15
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_15]
+NRO=16
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_16]
+NRO=17
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_17]
+NRO=18
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_18]
+NRO=19
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_19]
+NRO=20
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_20]
+NRO=21
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_21]
+NRO=22
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_22]
+NRO=23
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_23]
+NRO=24
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_24]
+NRO=25
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_25]
+NRO=26
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_26]
+NRO=27
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_27]
+NRO=28
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_28]
+NRO=29
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_29]
+NRO=30
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_30]
+NRO=31
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_31]
+NRO=32
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_32]
+NRO=33
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_33]
+NRO=34
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_34]
+NRO=35
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_35]
+NRO=36
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_36]
+NRO=37
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_37]
+NRO=38
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_38]
+NRO=39
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_39]
+NRO=40
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_40]
+NRO=41
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_41]
+NRO=42
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_42]
+NRO=43
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_43]
+NRO=44
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_44]
+NRO=45
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_45]
+NRO=46
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_46]
+NRO=47
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_47]
+NRO=48
+ANTECEDENTE=(Idade =  Ate_30) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_48]
+NRO=49
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_49]
+NRO=50
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_50]
+NRO=51
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_51]
+NRO=52
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_52]
+NRO=53
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_53]
+NRO=54
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_54]
+NRO=55
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_55]
+NRO=56
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_56]
+NRO=57
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_57]
+NRO=58
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_58]
+NRO=59
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_59]
+NRO=60
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_60]
+NRO=61
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_61]
+NRO=62
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_62]
+NRO=63
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_63]
+NRO=64
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_64]
+NRO=65
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_65]
+NRO=66
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_66]
+NRO=67
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_67]
+NRO=68
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_68]
+NRO=69
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_69]
+NRO=70
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_70]
+NRO=71
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_71]
+NRO=72
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_72]
+NRO=73
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_73]
+NRO=74
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_74]
+NRO=75
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_75]
+NRO=76
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_76]
+NRO=77
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_77]
+NRO=78
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_78]
+NRO=79
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_79]
+NRO=80
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_80]
+NRO=81
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_81]
+NRO=82
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_82]
+NRO=83
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_83]
+NRO=84
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_84]
+NRO=85
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_85]
+NRO=86
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_86]
+NRO=87
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_87]
+NRO=88
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_88]
+NRO=89
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_89]
+NRO=90
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_90]
+NRO=91
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_91]
+NRO=92
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_92]
+NRO=93
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_93]
+NRO=94
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_94]
+NRO=95
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_95]
+NRO=96
+ANTECEDENTE=(Idade =  Entre_30_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_96]
+NRO=97
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_97]
+NRO=98
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_98]
+NRO=99
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_99]
+NRO=100
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_100]
+NRO=101
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_101]
+NRO=102
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_102]
+NRO=103
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_103]
+NRO=104
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_104]
+NRO=105
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_105]
+NRO=106
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_106]
+NRO=107
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_107]
+NRO=108
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Ate_1000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_108]
+NRO=109
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_109]
+NRO=110
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_110]
+NRO=111
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_111]
+NRO=112
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_112]
+NRO=113
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_113]
+NRO=114
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_114]
+NRO=115
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_115]
+NRO=116
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_116]
+NRO=117
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_117]
+NRO=118
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_118]
+NRO=119
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_119]
+NRO=120
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  1000_2000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_120]
+NRO=121
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_121]
+NRO=122
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_122]
+NRO=123
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_123]
+NRO=124
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_124]
+NRO=125
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_125]
+NRO=126
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_126]
+NRO=127
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_127]
+NRO=128
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_128]
+NRO=129
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_129]
+NRO=130
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_130]
+NRO=131
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_131]
+NRO=132
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  2000_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Ruim)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_132]
+NRO=133
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_133]
+NRO=134
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_134]
+NRO=135
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_135]
+NRO=136
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Alto) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Media)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_136]
+NRO=137
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_137]
+NRO=138
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_138]
+NRO=139
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_139]
+NRO=140
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Medio) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_140]
+NRO=141
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Ate_1000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_141]
+NRO=142
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  1000_2000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_142]
+NRO=143
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  2000_3000)
+CONSEQUENTE=(Nota =  Alta)
+TIPO_UNIAO=AND
+[BLOCO_REGRA_0_REGRA_143]
+NRO=144
+ANTECEDENTE=(Idade =  Acima_50) AND (Renda =  Acima_3000) AND (Comprometimento_Renda =  Baixo) AND (Valor_Financiado =  Acima_3000)
+CONSEQUENTE=(Nota =  Alta)
 TIPO_UNIAO=AND
 [TEXTO_0]
 TEXTO=Definição do Salário
@@ -295,25 +990,125 @@ FONTCOLOR=clWindowText
 FONTSIZE=12
 COLORFUNDO=clWhite
 [SIMULACAO_0]
-TEMPO=380
+TEMPO=224
 IDOBJ_0=4
-VALOR_0=17600
+VALOR_0=70
+IDOBJ_1=13
+VALOR_1=1200
+IDOBJ_2=14
+VALOR_2=20
+IDOBJ_3=15
+VALOR_3=2000
 [SIMULACAO_1]
-TEMPO=369
+TEMPO=216
 IDOBJ_0=4
-VALOR_0=1000
+VALOR_0=70
+IDOBJ_1=13
+VALOR_1=1200
+IDOBJ_2=14
+VALOR_2=20
+IDOBJ_3=15
+VALOR_3=1000
 [SIMULACAO_2]
-TEMPO=369
+TEMPO=203
 IDOBJ_0=4
-VALOR_0=1700
+VALOR_0=70
+IDOBJ_1=13
+VALOR_1=1200
+IDOBJ_2=14
+VALOR_2=10
+IDOBJ_3=15
+VALOR_3=1000
 [SIMULACAO_3]
-TEMPO=369
+TEMPO=212
 IDOBJ_0=4
-VALOR_0=1800
+VALOR_0=70
+IDOBJ_1=13
+VALOR_1=1200
+IDOBJ_2=14
+VALOR_2=2
+IDOBJ_3=15
+VALOR_3=1000
 [SIMULACAO_4]
-TEMPO=369
+TEMPO=199
 IDOBJ_0=4
-VALOR_0=10000
+VALOR_0=70
+IDOBJ_1=13
+VALOR_1=1200
+IDOBJ_2=14
+VALOR_2=2
+IDOBJ_3=15
+VALOR_3=1000
+[SIMULACAO_5]
+TEMPO=202
+IDOBJ_0=4
+VALOR_0=25
+IDOBJ_1=13
+VALOR_1=3000
+IDOBJ_2=14
+VALOR_2=30
+IDOBJ_3=15
+VALOR_3=1000
+[SIMULACAO_6]
+TEMPO=197
+IDOBJ_0=4
+VALOR_0=25
+IDOBJ_1=13
+VALOR_1=3000
+IDOBJ_2=14
+VALOR_2=30
+IDOBJ_3=15
+VALOR_3=2000
+[SIMULACAO_7]
+TEMPO=199
+IDOBJ_0=4
+VALOR_0=35
+IDOBJ_1=13
+VALOR_1=3000
+IDOBJ_2=14
+VALOR_2=30
+IDOBJ_3=15
+VALOR_3=2000
+[SIMULACAO_8]
+TEMPO=199
+IDOBJ_0=4
+VALOR_0=35
+IDOBJ_1=13
+VALOR_1=3000
+IDOBJ_2=14
+VALOR_2=20
+IDOBJ_3=15
+VALOR_3=2000
+[SIMULACAO_9]
+TEMPO=209
+IDOBJ_0=4
+VALOR_0=22
+IDOBJ_1=13
+VALOR_1=3000
+IDOBJ_2=14
+VALOR_2=20
+IDOBJ_3=15
+VALOR_3=2000
+[SIMULACAO_10]
+TEMPO=203
+IDOBJ_0=4
+VALOR_0=22
+IDOBJ_1=13
+VALOR_1=3000
+IDOBJ_2=14
+VALOR_2=30
+IDOBJ_3=15
+VALOR_3=2000
+[SIMULACAO_11]
+TEMPO=201
+IDOBJ_0=4
+VALOR_0=22
+IDOBJ_1=13
+VALOR_1=3000
+IDOBJ_2=14
+VALOR_2=25
+IDOBJ_3=15
+VALOR_3=2000
 [OPCOES]
 CONF_LINHA_LARGURA_ENTRADA=1
 CONF_LINHA_LARGURA_SAIDA=1
